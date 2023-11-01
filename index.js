@@ -1,15 +1,11 @@
 import express from 'express';
-
+import router from "./routes/router.js";
+import bodyParser from "body-parser";
 
 const app = express();
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
-
-app.post('/shipment', (req, res) => {
-    /* Implementar un método que cree un shipment en la base de datos */
-});
+app.use('/', router);
 
 app.listen(3000, () => {
     console.log('Server is listening on port 3000');
